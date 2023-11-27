@@ -21,7 +21,6 @@ int	ft_printf(const char *format, ...);
 int	printchar(char c);
 int	printstr(char *s);
 int	print_digit(long n, int base, char specifier);
-int	print_digit(long n, int base, char specifier);
 int	ft_form(char specifier, va_list ap);
 int	print_address(unsigned long n);
 

@@ -19,7 +19,11 @@ int	print_address(unsigned long n)
 
 	symbols = "0123456789abcdef";
 	if (n < 16)
-		return (printchar(symbols[n]));
+	{
+		if (printchar(symbols[n]) < 0)
+			return (-1);
+		return (1);
+	}
 	else
 	{
 		count = print_address(n / 16);

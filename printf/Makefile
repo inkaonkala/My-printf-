@@ -13,7 +13,7 @@
 NAME = libftprintf.a
 
 SRC	=	\
-	  	ft_printf.c printchar.c printstr.c print_digit.c print_digit.c \
+	  	ft_printf.c printchar.c printstr.c print_digit.c \
 		ft_form.c print_address.c
 
 OBJ = $(SRC:.c=.o)

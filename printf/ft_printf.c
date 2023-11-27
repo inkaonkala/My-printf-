@@ -12,13 +12,8 @@
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+static int	print_f(const char *format, int totals, va_list ap)
 {
-	int		totals;
-	va_list	ap;
-
-	totals = 0;
-	va_start(ap, format);
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -27,14 +22,30 @@ int	ft_printf(const char *format, ...)
 				totals += printchar('%');
 			else
 				totals += ft_form(*(format), ap);
+			if (totals < 0)
+				return (-1);
 		}
 		else
 		{
-			write(1, format, 1);
+			if (write(1, format, 1) == -1)
+				return (-1);
 			totals ++;
 		}
 		format++;
 	}
+	return (totals);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	int		totals;
+	va_list	ap;
+
+	totals = 0;
+	va_start(ap, format);
+	totals = print_f(format, totals, ap);
+	if (totals < 0)
+		return (-1);
 	va_end(ap);
 	return (totals);
 }

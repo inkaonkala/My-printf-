@@ -21,14 +21,16 @@ int	printstr(char *s)
 	{
 		while (*s != '\0')
 		{
-			printchar((int)*s);
+			if (printchar((int)*s) < 0)
+				return (-1);
 			i++;
 			s++;
 		}
 	}
 	else
 	{
-		write (1, "(null)", 6);
+		if (write (1, "(null)", 6) == -1)
+			return (-1);
 		i = 6;
 	}
 	return (i);

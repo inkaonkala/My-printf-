@@ -31,12 +31,12 @@ int	ft_form(char specifier, va_list ap)
 		ptr = va_arg(ap, void *);
 		if (ap != NULL)
 		{
-			write (1, "0x", 2);
+			if (write (1, "0x", 2) == -1)
+				return (-1);
 			return (2 + (print_address((unsigned long)ptr)));
 		}
 		else
 			return (printstr("(nil)"));
 	}
-	else
-		return (-1);
+	return (1);
 }

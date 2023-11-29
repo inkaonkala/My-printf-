@@ -35,8 +35,6 @@ int	ft_form(char specifier, va_list ap)
 				return (-1);
 			return (2 + (print_address((unsigned long)ptr)));
 		}
-		else
-			return (printstr("(nil)"));
 	}
 	return (1);
 }

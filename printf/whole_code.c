@@ -105,8 +105,8 @@ int    ft_form(char specifier, va_list ap)
                 return (-1);
             return (2 + (print_address((unsigned long)ptr)));
         }
-        else
-            return (printstr("(nil)"));
+        //else
+         //   return (printstr("(null)"));
     }
     return (1);
 }
@@ -132,7 +132,10 @@ int    ft_printf(const char *format, ...)
         else
         {
             if (write(1, format, 1) == -1)
+            {
+                va_end(ap);
                 return (-1);
+            }
             totals ++;
         }
         format++;
@@ -144,6 +147,7 @@ int    ft_printf(const char *format, ...)
     return (totals);
 }
 
+/*
 int main()
 {
   
@@ -186,3 +190,4 @@ int main()
     
     return (0);
 }
+*/
